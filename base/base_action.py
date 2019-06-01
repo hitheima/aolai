@@ -1,3 +1,5 @@
+import time
+
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -115,3 +117,24 @@ class BaseAction:
                     break
                 page_source = self.driver.page_source
 
+    def is_keyword_in_page_source(self, keyword, timeout=10, poll=0.1):
+        """
+        如果 keyword 在 page_source 中，那么返回 True
+        如果 keyword 不在 page_source 中，那么返回 False
+        :param keyword: 关键的字符串
+        :param timeout: 超时时间，默认为10秒
+        :param poll: 频率，默认为0.1秒
+        :return:
+        """
+
+        # 结束时间
+        end_time = time.time() + timeout
+
+        while True:
+            # 如果结束时间大于当前时间，那么就认为超时了
+            if end_time < time.time():
+                return False
+            if keyword in self.driver.page_source:
+                return True
+
+            time.sleep(poll)
