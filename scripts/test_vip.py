@@ -28,14 +28,20 @@ class TestVip:
         # 切换 原生环境
         self.driver.switch_to.context("NATIVE_APP")
 
-    def is_can_not_be_vip(self):
+    def is_can_not_be_vip(self, timeout=10, poll=0.1):
         """
         如果不能成为会员，有"邀请码输入不正确"字符串，返回True
         :return:
         """
+
+        # 结束时间
+        end_time = time.time() + timeout
+
         while True:
+            # 如果结束时间大于当前时间，那么就认为超时了
+            if end_time < time.time():
+                return False
             if "邀请码输入不正确" in self.driver.page_source:
-                print("有")
                 return True
-            else:
-                print("没有")
+
+            time.sleep(poll)
