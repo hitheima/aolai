@@ -1,7 +1,9 @@
+from page.about_page import AboutPage
 from page.home_page import HomePage
 from page.login_page import LoginPage
 from page.me_page import MePage
 from page.register_page import RegisterPage
+from page.setting_page import SettingPage
 
 
 class Page:
@@ -24,3 +26,11 @@ class Page:
     @property
     def me(self):
         return MePage(self.driver)
+
+    @property
+    def setting(self):
+        return SettingPage(self.driver)
+
+    @property
+    def about(self):
+        return AboutPage(self.driver)
