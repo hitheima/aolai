@@ -13,6 +13,12 @@ class GoodsDetailPage(BaseAction):
     # 确认 按钮
     commit_button = By.XPATH, "//*[@text='确认']"
 
+    # 商品标题 特征
+    goods_title_text_view = By.ID, "com.yunmall.lc:id/tv_product_title"
+
+    # 购物车 按钮
+    shop_cart_button = By.ID, "com.yunmall.lc:id/btn_shopping_cart"
+
     # 点击 加入购物车
     def click_add_shop_cart(self):
         self.click(self.add_shop_cart_button)
@@ -37,3 +43,15 @@ class GoodsDetailPage(BaseAction):
             else:
                 break
 
+    # 获取商品的标题
+    def get_goods_title_text(self):
+        return self.get_text(self.goods_title_text_view)
+
+    # 点击 购物车
+    def click_shop_cart(self):
+        self.click(self.shop_cart_button)
+
+    # 根据商品的标题，判断是否存在这个页面上
+    def is_goods_title_exist(self, title):
+        title_xpath = By.XPATH, "//*[@text='%s']" % title
+        return self.is_feature_exist(title_xpath)
