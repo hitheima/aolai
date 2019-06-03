@@ -1,0 +1,37 @@
+test_add_address:
+  test_add_address_001:
+    name: "李四"
+    phone: "17777777777"
+    info: "二单元 305"
+    post_code: "100000"
+    toast: Null
+  test_add_address_002:
+    name: ""
+    phone: "17777777777"
+    info: "二单元 305"
+    post_code: "100000"
+    toast: "收件人姓名"
+  test_add_address_003:
+    name: "李四"
+    phone: "1666666"
+    info: "二单元 305"
+    post_code: "100000"
+    toast: "11位手机号"
+  test_add_address_004:
+    name: "李四"
+    phone: "17777777777"
+    info: ""
+    post_code: "100000"
+    toast: "请输入详细地址"
+  test_add_address_005:
+    name: "李四"
+    phone: "17777777777"
+    info: "二单元 305"
+    post_code: "123"
+    toast: "邮政编码错误"
+  test_add_address_006:
+    name: "李四"
+    phone: "17777777777"
+    info: "二单元 305"
+    post_code: ""
+    toast: Null
