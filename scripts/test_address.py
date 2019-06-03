@@ -93,5 +93,29 @@ class TestAddress:
         # 断言，是否出现 "保存成功" 的toast信息
         assert self.page.address_list.is_toast_exist("保存成功")
 
+    def test_delete_address(self):
+        # 首页，如果没有登录就登录
+        self.page.home.login_if_not(self.page)
+        # 我 点击 设置
+        self.page.me.click_setting()
+        # 设置 点击 地址管理
+        self.page.setting.click_address_list()
 
+        # 断言 是否有地址可删除
+        assert self.page.address_list.is_default_feature_exist(), "默认标记不存在，没有地址可以删除"
+
+        for i in range(10):
+            self.page.address_list.click_edit()
+            # 判断 删除是否存在
+            if not self.page.address_list.is_delete_exist():
+                # 如果不存在，break
+                break
+            # 如果存在，则点击
+            self.page.address_list.click_delete()
+            self.page.address_list.click_commit()
+
+        # 点击编辑
+        self.page.address_list.click_edit()
+        # 断言 删除按钮 是否存在，如果不存在则通过，如果存在则有问题
+        assert not self.page.address_list.is_delete_exist(), "收货地址没有删除完毕"
 
