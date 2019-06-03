@@ -26,3 +26,7 @@ class AddressListPage(BaseAction):
     # 判断 默认标记 是否存在
     def is_default_feature_exist(self):
         return self.is_feature_exist(self.is_default_feature)
+
+    # 点击 默认地址
+    def click_default_address(self):
+        self.click(self.is_default_feature)

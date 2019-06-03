@@ -75,7 +75,23 @@ class TestAddress:
             # 新增地址 点击 保存
             self.page.edit_address.click_save()
 
-        # 进行修改
-        print("修改")
+        # 进入 默认地址 (进入了 edit_address界面)
+        self.page.address_list.click_default_address()
+        # 重新输入 收件人
+        self.page.edit_address.input_name("李四")
+        # 重新输入 手机号
+        self.page.edit_address.input_phone("16666666666")
+        # 重新输入 详细地址
+        self.page.edit_address.input_info("302 二单元")
+        # 重新输入 邮编
+        self.page.edit_address.input_post_code("222222")
+        # 重新输入 所在地区
+        self.page.edit_address.choose_region()
+        # 保存
+        self.page.edit_address.click_save()
+
+        # 断言，是否出现 "保存成功" 的toast信息
+        assert self.page.address_list.is_toast_exist("保存成功")
+
 
 
