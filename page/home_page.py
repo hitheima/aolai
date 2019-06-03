@@ -8,9 +8,16 @@ class HomePage(BaseAction):
     # 我
     me_button = By.ID, "com.yunmall.lc:id/tab_me"
 
+    # 分类
+    category_button = By.ID, "com.yunmall.lc:id/tab_category"
+
     # 点击 我
     def click_me(self):
         self.click(self.me_button)
+
+    # 点击 分类
+    def click_category(self):
+        self.click(self.category_button)
 
     def login_if_not(self, page):
         # 判断登录状态
