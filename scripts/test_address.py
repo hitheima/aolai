@@ -27,5 +27,9 @@ class TestAddress:
         self.page.edit_address.input_post_code("100000")
         # 新增地址 勾选 设为默认地址
         self.page.edit_address.click_default_address()
+        # 新增地址 选择一个随机的区域
+        self.page.edit_address.choose_region()
+        # 新增地址 点击 保存
+        self.page.edit_address.click_save()
 
 
