@@ -32,4 +32,8 @@ class TestAddress:
         # 新增地址 点击 保存
         self.page.edit_address.click_save()
 
+        # "张三  18888888888"
+        assert self.page.address_list.get_default_receipt_name_text() == "%s  %s" % ("张三", "18888888888")
+
+
 
