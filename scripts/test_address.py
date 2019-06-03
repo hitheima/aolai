@@ -24,7 +24,7 @@ class TestAddress:
         # 新增地址 输入 详细地址
         self.page.edit_address.input_info("三单元 504")
         # 新增地址 输入 邮编
-        self.page.edit_address.input_post_code("100000")
+        self.page.edit_address.input_post_code("10000")
         # 新增地址 勾选 设为默认地址
         self.page.edit_address.click_default_address()
         # 新增地址 选择一个随机的区域
@@ -32,8 +32,10 @@ class TestAddress:
         # 新增地址 点击 保存
         self.page.edit_address.click_save()
 
-        # "张三  18888888888"
-        assert self.page.address_list.get_default_receipt_name_text() == "%s  %s" % ("张三", "18888888888")
+        assert self.page.edit_address.is_toast_exist("11位手机号")
+
+        # # "张三  18888888888"
+        # assert self.page.address_list.get_default_receipt_name_text() == "%s  %s" % ("张三", "18888888888")
 
 
 
