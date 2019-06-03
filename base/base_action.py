@@ -56,6 +56,13 @@ class BaseAction:
         else:
             raise Exception("toast未出现，请检查参数是否正确或toast有没有出现在屏幕上")
 
+    def is_feature_exist(self, feature):
+        try:
+            self.find_element(feature)
+            return True
+        except TimeoutException:
+            return False
+
     def scroll_page_one_time(self, direction="up"):
         """
         滑动一次屏幕
